@@ -7,7 +7,34 @@
 
 body {
   @apply select-none;
+  overflow: overlay;
   font-family: "Poppins", sans-serif;
+}
+
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+.animate-blink {
+  display: inline-block;
+  animation: blink 1s infinite;
 }
 
 @theme {
@@ -30,4 +57,37 @@ body {
   --color-border: hsl(217.2 32.6% 17.5%);
   --color-input: hsl(217.2 32.6% 17.5%);
   --color-ring: hsl(268, 76%, 48%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -9999;
+  background: var(--color-background);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track (fundo da barra) */
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+/* Handle (a parte que se move) */
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  filter: brightness(0.9);
 }
