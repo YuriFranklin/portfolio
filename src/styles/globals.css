@@ -91,3 +91,19 @@ body::before {
 ::-webkit-scrollbar-thumb:hover {
   filter: brightness(0.9);
 }
+
+@media (max-width: 768px) {
+  /* Chrome, Safari e Edge */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Firefox */
+  html {
+    scrollbar-width: none;
+  }
+
+  body {
+    -ms-overflow-style: none; /* Internet Explorer e Edge Legacy */
+  }
+}

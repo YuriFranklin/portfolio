@@ -5,11 +5,13 @@ import HeaderMenuItem, {
 type HeaderMenuProps = {
 	headerMenuItems: HeaderMenuItemProps[];
 	className?: string;
+	onItemClick?: (url?: string) => void;
 };
 
 const HeaderMenu: React.FC<HeaderMenuProps> = ({
 	headerMenuItems,
 	className = "",
+	onItemClick,
 }) => {
 	return (
 		<div
@@ -17,7 +19,11 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({
         flex-col md:flex-row ${className}`}
 		>
 			{headerMenuItems?.map((item) => (
-				<HeaderMenuItem key={item.url} {...item} />
+				<HeaderMenuItem
+					key={item.url}
+					{...item}
+					onClick={() => onItemClick?.(item.url)}
+				/>
 			))}
 		</div>
 	);

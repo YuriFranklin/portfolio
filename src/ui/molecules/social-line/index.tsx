@@ -1,8 +1,18 @@
+"use client";
+import { motion } from "framer-motion";
 import { SiGithub, SiInstagram, SiLinkedin } from "react-icons/si";
 
 const SocialLine: React.FC = () => {
 	return (
-		<div className="flex flex-col-reverse gap-4 h-120 w-fit items-center">
+		<motion.div
+			initial={{ opacity: 0, y: 50 }}
+			animate={{ opacity: 1, y: 0 }}
+			transition={{
+				duration: 1.2,
+				ease: [0.22, 1, 0.36, 1],
+			}}
+			className="flex flex-col-reverse gap-4 h-120 w-fit items-center"
+		>
 			<div className="flex-1 w-0.5 bg-gray-500/80" />
 
 			<div className="flex flex-col gap-4 items-center">
@@ -40,7 +50,7 @@ const SocialLine: React.FC = () => {
 					<SiInstagram size={20} />
 				</a>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 
